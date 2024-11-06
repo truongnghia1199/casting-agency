@@ -20,7 +20,7 @@ def hello():
 
 #ACTOR
 @app.route('/actors')
-@requires_auth("get:actors", methods=["GET"])
+@requires_auth("get:actors")
 def get_actors(payload):
     actors = Actors.query.all()
     return jsonify({"success": True, "actors": [actor.format() for actor in actors]})
@@ -74,7 +74,7 @@ def delete_actor(payload, id):
 
 
 @app.route('/movies')
-@requires_auth("get:movies", methods=["GET"])
+@requires_auth("get:movies")
 def get_movies(payload):
     movies = Movies.query.all()
     return jsonify({"success": True, "movies": [movie.format() for movie in movies]})
